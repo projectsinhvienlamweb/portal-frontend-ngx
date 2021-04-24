@@ -10,3 +10,5 @@ We're always happy to receive your feedback!
 ### Build
 npm i
 npm run build:prod
+
+We can also ng test
