@@ -42,17 +42,17 @@ export class SmartTableComponent {
         type: 'string',
         valuePrepareFunction: date => {
           date = new Date(date);
-          return date.getDate() + '-' + (date.getMonth() + 1) + '-' +  date.getFullYear()
-        }
+          return date.getDate() + '-' + (date.getMonth() + 1) + '-' +  date.getFullYear();
+        },
       },
       pNumber: {
         title: 'Phone Number',
-        type: 'number'
-      }, 
+        type: 'number',
+      },
       role: {
         title: 'ROLE',
-        type: 'string'
-      }
+        type: 'string',
+      },
     },
   };
 
