@@ -6,6 +6,6 @@ export const STUDENTS: STUDENT[] = [
         dob: new Date('1998-12-1'),
         address: '',
         pNumber: 3213321,
-        role: 'Student'
+        role: 'Student',
     },
 ]
