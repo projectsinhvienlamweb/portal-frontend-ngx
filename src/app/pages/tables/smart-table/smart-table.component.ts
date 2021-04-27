@@ -1,7 +1,10 @@
+import { DatePipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { LocalDataSource } from 'ng2-smart-table';
 
 import { SmartTableData } from '../../../@core/data/smart-table';
+import { STUDENTS } from '../../../dom-data/mock-user';
+import { STUDENT } from '../../../dom-data/user';
 
 @Component({
   selector: 'ngx-smart-table',
@@ -30,37 +33,38 @@ export class SmartTableComponent {
         title: 'ID',
         type: 'number',
       },
-      firstName: {
-        title: 'First Name',
+      name: {
+        title: 'Name',
         type: 'string',
       },
-      lastName: {
-        title: 'Last Name',
+      dob: {
+        title: 'Date of Birth',
         type: 'string',
+        valuePrepareFunction: date => {
+          date = new Date(date);
+          return date.getDate() + '-' + (date.getMonth() + 1) + '-' +  date.getFullYear()
+        }
       },
-      username: {
-        title: 'Username',
-        type: 'string',
-      },
-      email: {
-        title: 'E-mail',
-        type: 'string',
-      },
-      age: {
-        title: 'Age',
-        type: 'number',
-      },
+      pNumber: {
+        title: 'Phone Number',
+        type: 'number'
+      }, 
+      role: {
+        title: 'ROLE',
+        type: 'string'
+      }
     },
   };
 
+  students = STUDENTS;
   source: LocalDataSource = new LocalDataSource();
-
   constructor(private service: SmartTableData) {
-    const data = this.service.getData();
-    this.source.load(data);
+    // const data = this.service.getData();
+    this.source.load(this.students);
   }
 
   onDeleteConfirm(event): void {
+    console.log(event)
     if (window.confirm('Are you sure you want to delete?')) {
       event.confirm.resolve();
     } else {
