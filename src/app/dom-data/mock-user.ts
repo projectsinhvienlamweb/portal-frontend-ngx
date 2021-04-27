@@ -8,4 +8,4 @@ export const STUDENTS: STUDENT[] = [
         pNumber: 3213321,
         role: 'Student',
     },
-]
+];
