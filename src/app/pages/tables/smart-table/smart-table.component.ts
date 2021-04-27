@@ -61,11 +61,9 @@ export class SmartTableComponent {
   constructor(private service: SmartTableData) {
     // const data = this.service.getData();
     this.source.load(this.students);
-    console.log(this.source);
   }
 
   onDeleteConfirm(event): void {
-    console.log(event)
     if (window.confirm('Are you sure you want to delete?')) {
       event.confirm.resolve();
     } else {
