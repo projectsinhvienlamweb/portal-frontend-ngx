@@ -1,15 +1,15 @@
-import { DatePipe } from '@angular/common';
-import { Component } from '@angular/core';
-import { LocalDataSource } from 'ng2-smart-table';
+import { DatePipe } from "@angular/common";
+import { Component } from "@angular/core";
+import { LocalDataSource } from "ng2-smart-table";
 
-import { SmartTableData } from '../../../@core/data/smart-table';
-import { STUDENTS } from '../../../dom-data/mock-user';
-import { STUDENT } from '../../../dom-data/user';
+import { SmartTableData } from "../../../@core/data/smart-table";
+import { STUDENTS } from "../../../dom-data/mock-user";
+import { STUDENT } from "../../../dom-data/user";
 
 @Component({
-  selector: 'ngx-smart-table',
-  templateUrl: './smart-table.component.html',
-  styleUrls: ['./smart-table.component.scss'],
+  selector: "ngx-smart-table",
+  templateUrl: "./smart-table.component.html",
+  styleUrls: ["./smart-table.component.scss"],
 })
 export class SmartTableComponent {
   settings = {
@@ -29,43 +29,43 @@ export class SmartTableComponent {
     },
     columns: {
       id: {
-        title: 'ID',
-        type: 'number',
+        title: "ID",
+        type: "number",
         filter: false,
         editable: false,
         addedable: false,
       },
       name: {
-        title: 'Name',
-        type: 'string',
+        title: "Name",
+        type: "string",
         filter: false,
       },
       dob: {
-        title: 'Date of Birth (DD/MM/YYYY)',
-        type: 'string',
+        title: "Date of Birth (DD/MM/YYYY)",
+        type: "string",
         valuePrepareFunction: (date) => {
           date = new Date(
-            `${date.split('-')[1]}-${date.split('-')[0]}-${date.split('-')[2]}`,
+            `${date.split("-")[1]}-${date.split("-")[0]}-${date.split("-")[2]}`
           );
 
           return (
             date.getDate() +
-            '-' +
+            "-" +
             (date.getMonth() + 1) +
-            '-' +
+            "-" +
             date.getFullYear()
           );
         },
         filter: false,
       },
       pNumber: {
-        title: 'Phone Number',
-        type: 'number',
+        title: "Phone Number",
+        type: "number",
         filter: false,
       },
       role: {
-        title: 'ROLE',
-        type: 'string',
+        title: "ROLE",
+        type: "string",
         filter: false,
       },
     },
@@ -78,45 +78,44 @@ export class SmartTableComponent {
     this.source.load(this.students);
   }
 
-  onSearch(query: string = ''): void {
-    if (query.length == 0) {
+  onSearch(query: string = ""): void {
+    if (query.length === 0) {
       this.source.setFilter([]);
     } else {
       this.source.setFilter(
         [
           {
-            field: 'id',
+            field: "id",
             search: query,
           },
           {
-            field: 'name',
+            field: "name",
             search: query,
           },
           {
-            field: 'dob',
+            field: "dob",
             search: query,
           },
           {
-            field: 'address',
+            field: "address",
             search: query,
           },
           {
-            field: 'pNumber',
+            field: "pNumber",
             search: query,
           },
           {
-            field: 'role',
+            field: "role",
             search: query,
           },
         ],
         false
       );
     }
-    console.log(query.length);
   }
 
   onDeleteConfirm(event): void {
-    if (window.confirm('Are you sure you want to delete?')) {
+    if (window.confirm("Are you sure you want to delete?")) {
       event.confirm.resolve();
     } else {
       event.confirm.reject();
