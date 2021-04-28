@@ -109,7 +109,7 @@ export class SmartTableComponent {
             search: query,
           },
         ],
-        false
+        false,
       );
     }
 }
