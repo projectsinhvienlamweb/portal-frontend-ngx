@@ -4,6 +4,11 @@
   </nb-card-header>
 
   <nb-card-body>
+    <div class="form-group">
+      <label for="search">Search</label>
+      <input class="form-control" #search type="text" (keydown.enter)="onSearch(search.value)">
+    </div>
+    
     <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)">
     </ng2-smart-table>
   </nb-card-body>
