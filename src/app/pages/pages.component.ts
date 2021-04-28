@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import Auth from '@aws-amplify/auth';
 import { MENU_ITEMS } from './pages-menu';
 
 @Component({

@@ -21,6 +21,12 @@ import {
   NbWindowModule,
 } from '@nebular/theme';
 
+import { AmplifyUIAngularModule } from '@aws-amplify/ui-angular';
+import Amplify from 'aws-amplify';
+import { environment } from '../environments/environment';
+
+Amplify.configure(environment.amplifyConfig);
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -39,6 +45,7 @@ import {
     }),
     CoreModule.forRoot(),
     ThemeModule.forRoot(),
+    AmplifyUIAngularModule,
   ],
   bootstrap: [AppComponent],
 })
