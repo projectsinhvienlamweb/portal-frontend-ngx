@@ -2,6 +2,7 @@
 version: 2.1
 orbs: 
   browser-tools: circleci/browser-tools@1.1.3
+  aws-s3: circleci/aws-s3@2.0.0
 jobs: 
   test: 
     docker: 
@@ -79,8 +80,17 @@ jobs:
           name: "Install local dependencies"
       - 
         run: 
-          command: "npx ng deploy --configuration	development"
-          name: "Deploy ng app"
+          command: "npx ng build --configuration development"
+          name: "Deploy ng app to DEV env"
+      - 
+        aws-s3/sync:
+          arguments: |
+              --delete
+          aws-access-key-id: AWS_ACCESS_KEY_ID
+          aws-region: NG_DEPLOY_AWS_REGION
+          aws-secret-access-key: AWS_SECRET_ACCESS_KEY
+          from: dist
+          to: s3://dev-sg.portal.hocvienconggiao.com
     working_directory: ~/ngx-portal    
   push_prod: 
     docker: 
@@ -106,8 +116,17 @@ jobs:
           name: "Install local dependencies"
       - 
         run: 
-          command: "npx ng deploy --configuration	production"
-          name: "Deploy ng app"
+          command: "npx ng build --configuration production"
+          name: "Deploy ng app to PROD env"
+      - 
+        aws-s3/sync:
+          arguments: |
+              --delete
+          aws-access-key-id: AWS_ACCESS_KEY_ID
+          aws-region: NG_DEPLOY_AWS_REGION
+          aws-secret-access-key: AWS_SECRET_ACCESS_KEY
+          from: dist
+          to: s3://prod-sg.portal.hocvienconggiao.com
     working_directory: ~/ngx-portal    
     
 workflows: 
@@ -124,7 +143,7 @@ workflows:
                 # The above line of code causes the job push_dev to only be run when the branch being built starts with "test/" in it.
           requires: 
             - test
-      - push_dev:
+      - push_prod:
           context: build_push
           filters: 
             branches: 
