@@ -8,15 +8,13 @@ import { STUDENT } from './dom-data/user';
 
 @Injectable({
   providedIn: 'root',
-});
+})
 export class StudentService extends DatabaseService {
   // private studentUrl = 'api/students';
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient) {
     super();
-  };
-  
+  }
   getStudents(): Observable<STUDENT[]>{
     return this.http.get<STUDENT[]>(this.studentUrl);
   };
-  
 }

@@ -5,7 +5,7 @@ import { STUDENT } from './dom-data/user';
 
 @Injectable({
   providedIn: 'root',
-});
+})
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
     const students = STUDENTS;
