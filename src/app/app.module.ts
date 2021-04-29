@@ -20,6 +20,9 @@ import {
   NbToastrModule,
   NbWindowModule,
 } from '@nebular/theme';
+import { HttpClientInMemoryWebApiModule, InMemoryDbService } from 'angular-in-memory-web-api';
+import { environment } from '../environments/environment';
+import { InMemoryDataService } from './in-memory-data.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -27,6 +30,7 @@ import {
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService,{dataEncapsulation: false}),
     AppRoutingModule,
     NbSidebarModule.forRoot(),
     NbMenuModule.forRoot(),
@@ -41,6 +45,9 @@ import {
     ThemeModule.forRoot(),
   ],
   bootstrap: [AppComponent],
+  providers: [
+    InMemoryDataService
+  ]
 })
 export class AppModule {
 }

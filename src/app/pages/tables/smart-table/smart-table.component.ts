@@ -5,6 +5,7 @@ import { LocalDataSource } from 'ng2-smart-table';
 import { SmartTableData } from '../../../@core/data/smart-table';
 import { STUDENTS } from '../../../dom-data/mock-user';
 import { STUDENT } from '../../../dom-data/user';
+import { StudentService } from '../../../student.service';
 
 @Component({
   selector: 'ngx-smart-table',
@@ -73,9 +74,11 @@ export class SmartTableComponent {
 
   students = STUDENTS;
   source: LocalDataSource = new LocalDataSource();
-  constructor(private service: SmartTableData) {
+  constructor(private service: StudentService) {
     // const data = this.service.getData();
-    this.source.load(this.students);
+    this.service.getStudents().subscribe((d) => {
+      this.source.load(d);
+    })
   }
 
   onSearch(query: string = ''): void {
@@ -112,7 +115,7 @@ export class SmartTableComponent {
         false,
       );
     }
-}
+  }
 
   onDeleteConfirm(event): void {
     if (window.confirm('Are you sure you want to delete?')) {
