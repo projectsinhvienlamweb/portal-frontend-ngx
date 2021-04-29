@@ -20,10 +20,10 @@ const routes: Routes = [
       }, {
         path: '',
         redirectTo: 'smart-table',
-        pathMatch: 'full'
-      }
+        pathMatch: 'full',
+      },
     ],
-  }
+  },
 ];
 
 @NgModule({

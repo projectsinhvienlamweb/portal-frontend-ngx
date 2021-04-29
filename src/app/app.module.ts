@@ -30,7 +30,7 @@ import { InMemoryDataService } from './in-memory-data.service';
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService,{dataEncapsulation: false}),
+    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { dataEncapsulation: false }),
     AppRoutingModule,
     NbSidebarModule.forRoot(),
     NbMenuModule.forRoot(),
@@ -46,8 +46,8 @@ import { InMemoryDataService } from './in-memory-data.service';
   ],
   bootstrap: [AppComponent],
   providers: [
-    InMemoryDataService
-  ]
+    InMemoryDataService,
+  ],
 })
 export class AppModule {
 }

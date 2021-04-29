@@ -4,8 +4,8 @@ import { STUDENTS } from './dom-data/mock-user';
 import { STUDENT } from './dom-data/user';
 
 @Injectable({
-  providedIn: 'root'
-})
+  providedIn: 'root',
+});
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
     const students = STUDENTS;

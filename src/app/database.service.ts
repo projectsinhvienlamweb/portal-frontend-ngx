@@ -3,10 +3,10 @@ import { Observable } from 'rxjs';
 import { STUDENT } from './dom-data/user';
 
 @Injectable({
-  providedIn: 'root'
-})
+  providedIn: 'root',
+});
 export abstract class DatabaseService {
-  studentUrl = 'api/students'
+  studentUrl = 'api/students';
   abstract getStudents(): Observable<STUDENT[]>;
 
   constructor() { }

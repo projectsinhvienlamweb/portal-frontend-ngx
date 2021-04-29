@@ -78,7 +78,7 @@ export class SmartTableComponent {
     // const data = this.service.getData();
     this.service.getStudents().subscribe((data) => {
       this.source.load(data);
-    })
+    });
   }
 
   onSearch(query: string = ''): void {
