@@ -32,14 +32,12 @@ export class SmartTableComponent {
       id: {
         title: 'ID',
         type: 'number',
-        filter: false,
         editable: false,
         addedable: false,
       },
       name: {
         title: 'Name',
         type: 'string',
-        filter: false,
       },
       dob: {
         title: 'Date of Birth (DD/MM/YYYY)',
@@ -57,17 +55,14 @@ export class SmartTableComponent {
             date.getFullYear()
           );
         },
-        filter: false,
       },
       pNumber: {
         title: 'Phone Number',
         type: 'number',
-        filter: false,
       },
       role: {
         title: 'ROLE',
         type: 'string',
-        filter: false,
       },
     },
   };
