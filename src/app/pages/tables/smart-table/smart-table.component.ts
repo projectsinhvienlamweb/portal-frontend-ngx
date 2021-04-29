@@ -76,8 +76,8 @@ export class SmartTableComponent {
   source: LocalDataSource = new LocalDataSource();
   constructor(private service: StudentService) {
     // const data = this.service.getData();
-    this.service.getStudents().subscribe((d) => {
-      this.source.load(d);
+    this.service.getStudents().subscribe((data) => {
+      this.source.load(data);
     })
   }
 
