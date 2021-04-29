@@ -12,3 +12,6 @@ npm i
 npm run build:prod
 
 We can also ng test
+### Deploy
+npx cross-env NG_DEPLOY_AWS_ACCESS_KEY_ID=1234 NG_DEPLOY_AWS_SECRET_ACCESS_KEY=321ACCESS NG_DEPLOY_AWS_BUCKET=mys3bucket NG_DEPLOY_AWS_REGION=eu-1-region ng deploy
+
