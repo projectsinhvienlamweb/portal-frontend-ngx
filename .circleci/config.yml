@@ -91,6 +91,7 @@ jobs:
           aws-secret-access-key: AWS_SECRET_ACCESS_KEY
           from: dist
           to: s3://dev-sg.portal.hocvienconggiao.com
+
     working_directory: ~/ngx-portal    
   push_prod: 
     docker: 
@@ -127,6 +128,7 @@ jobs:
           aws-secret-access-key: AWS_SECRET_ACCESS_KEY
           from: dist
           to: s3://prod-sg.portal.hocvienconggiao.com
+
     working_directory: ~/ngx-portal    
     
 workflows: 
