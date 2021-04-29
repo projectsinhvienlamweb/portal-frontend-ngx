@@ -1,4 +1,7 @@
 --- 
+version: 2.1
+orbs: 
+  browser-tools: circleci/browser-tools@1.1.3
 jobs: 
   test: 
     docker: 
@@ -76,12 +79,37 @@ jobs:
           name: "Install local dependencies"
       - 
         run: 
-          command: "npx ng deploy"
+          command: "npx ng deploy --configuration	development"
           name: "Deploy ng app"
     working_directory: ~/ngx-portal    
-orbs: 
-  browser-tools: circleci/browser-tools@1.1.3
-version: 2.1
+  push_prod: 
+    docker: 
+      - 
+        image: "cimg/node:10.24.0"
+    environment:
+      NG_DEPLOY_AWS_BUCKET: prod-sg.portal.hocvienconggiao.com
+      NG_DEPLOY_AWS_REGION: ap-southeast-1
+    steps:
+      - checkout
+      - 
+        run: 
+          command: "echo ${CIRCLE_BRANCH}"
+          name: "Show current branch"
+      - 
+        restore_cache: 
+          keys: 
+            - "v1-dependencies-{{ checksum \"package-lock.json\" }}"
+            - v1-dependencies-
+      - 
+        run: 
+          command: "npm install"
+          name: "Install local dependencies"
+      - 
+        run: 
+          command: "npx ng deploy --configuration	production"
+          name: "Deploy ng app"
+    working_directory: ~/ngx-portal    
+    
 workflows: 
   test_and_push: 
     jobs: 
@@ -96,4 +124,14 @@ workflows:
                 # The above line of code causes the job push_dev to only be run when the branch being built starts with "test/" in it.
           requires: 
             - test
+      - push_dev:
+          context: build_push
+          filters: 
+            branches: 
+              only: 
+                - prod
+                # - /test\/.*/
+                # The above line of code causes the job push_dev to only be run when the branch being built starts with "test/" in it.
+          requires: 
+            - test            
   version: 2
