@@ -14,7 +14,7 @@ export class StudentService extends DatabaseService {
   constructor(private http: HttpClient) {
     super();
   }
-  getStudents(): Observable<STUDENT[]>{
+  getStudents(): Observable<STUDENT[]> {
     return this.http.get<STUDENT[]>(this.studentUrl);
-  };
+  }
 }
