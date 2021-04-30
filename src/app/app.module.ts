@@ -22,7 +22,7 @@ import {
 } from '@nebular/theme';
 import { HttpClientInMemoryWebApiModule, InMemoryDbService } from 'angular-in-memory-web-api';
 import { environment } from '../environments/environment';
-import { InMemoryDataService } from './in-memory-data.service';
+import { StudentService } from './student.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -30,7 +30,6 @@ import { InMemoryDataService } from './in-memory-data.service';
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { dataEncapsulation: false }),
     AppRoutingModule,
     NbSidebarModule.forRoot(),
     NbMenuModule.forRoot(),
@@ -46,7 +45,7 @@ import { InMemoryDataService } from './in-memory-data.service';
   ],
   bootstrap: [AppComponent],
   providers: [
-    InMemoryDataService,
+    StudentService,
   ],
 })
 export class AppModule {

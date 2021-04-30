@@ -1,8 +1,9 @@
-export interface STUDENT {
+export interface USER {
   id: number;
   name: String;
+  email: String;
   dob: String;
-  address: String;
-  pNumber: Number;
+  avatar: String;
   role: String;
+  phone_number: number;
 }

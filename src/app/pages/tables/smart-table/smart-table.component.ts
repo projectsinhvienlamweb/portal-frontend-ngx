@@ -1,10 +1,11 @@
 import { DatePipe } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { LocalDataSource } from 'ng2-smart-table';
+import { LocalDataSource, ServerDataSource } from 'ng2-smart-table';
+import { ServerSourceConf } from 'ng2-smart-table/lib/lib/data-source/server/server-source.conf';
 
 import { SmartTableData } from '../../../@core/data/smart-table';
-import { STUDENTS } from '../../../dom-data/mock-user';
-import { STUDENT } from '../../../dom-data/user';
+import { USER } from '../../../dom-data/user';
 import { StudentService } from '../../../student.service';
 
 @Component({
@@ -18,11 +19,13 @@ export class SmartTableComponent {
       addButtonContent: '<i class="nb-plus"></i>',
       createButtonContent: '<i class="nb-checkmark"></i>',
       cancelButtonContent: '<i class="nb-close"></i>',
+      confirmCreate: true,
     },
     edit: {
       editButtonContent: '<i class="nb-edit"></i>',
       saveButtonContent: '<i class="nb-checkmark"></i>',
       cancelButtonContent: '<i class="nb-close"></i>',
+      confirmSave: true,
     },
     delete: {
       deleteButtonContent: '<i class="nb-trash"></i>',
@@ -33,90 +36,90 @@ export class SmartTableComponent {
         title: 'ID',
         type: 'number',
         editable: false,
-        addedable: false,
+        addable: false,
       },
       name: {
         title: 'Name',
         type: 'string',
       },
       dob: {
-        title: 'Date of Birth (DD/MM/YYYY)',
+        title: 'DOB (DD/MM/YYYY)',
         type: 'string',
-        valuePrepareFunction: (date) => {
-          date = new Date(
-            `${date.split('-')[1]}-${date.split('-')[0]}-${date.split('-')[2]}`,
-          );
-
-          return (
-            date.getDate() +
-            '-' +
-            (date.getMonth() + 1) +
-            '-' +
-            date.getFullYear()
-          );
-        },
       },
-      pNumber: {
-        title: 'Phone Number',
-        type: 'number',
+      email: {
+        title: 'Email',
+        type: 'string',
+      },
+      avatar: {
+        title: 'Avatar',
+        type: 'html',
+        filter: false,
+        valuePrepareFunction: (img) => {
+          return `
+            <img class="profile" src=${img} alt=${img}/>
+          `;
+        },
       },
       role: {
         title: 'ROLE',
-        type: 'string',
+        type: String,
       },
     },
+    pager: {
+      perPage: 4,
+    },
   };
+  valueSearch: string = '';
+  source: LocalDataSource = new LocalDataSource;
+  cache: USER[];
 
-  students = STUDENTS;
-  source: LocalDataSource = new LocalDataSource();
-  constructor(private service: StudentService) {
+  constructor(private service: StudentService, private http: HttpClient) {
     // const data = this.service.getData();
-    this.service.getStudents().subscribe((data) => {
-      this.source.load(data);
+    this.service.getUsers().subscribe((res) => {
+      this.source.load(res);
+      this.cache = res;
+    }, err => {
+      throw new Error;
     });
   }
 
-  onSearch(query: string = ''): void {
-    if (query.length === 0) {
-      this.source.setFilter([]);
+  onAdd(data): void {
+    if (!data.newData.name || !data.newData.email || !data.newData.dob || !data.newData.role) {
+      alert('please input your information');
+      data.confirm.reject();
     } else {
-      this.source.setFilter(
-        [
-          {
-            field: 'id',
-            search: query,
-          },
-          {
-            field: 'name',
-            search: query,
-          },
-          {
-            field: 'dob',
-            search: query,
-          },
-          {
-            field: 'address',
-            search: query,
-          },
-          {
-            field: 'pNumber',
-            search: query,
-          },
-          {
-            field: 'role',
-            search: query,
-          },
-        ],
-        false,
-      );
+      this.service.postUser(data.newData).subscribe(res => {
+        data.confirm.resolve(res);
+      }, err => {
+        data.confirm.reject();
+        alert('Something went wrong !!!');
+        throw new Error;
+      });
     }
+    // this.service.postUser(data.newData).subscribe(res => {
+    //   data.confirm.resolve();
+    // }, err => {
+    //   data.confirm.reject();
+    //   alert('Something went wrong !!!');
+    //   throw new Error;
+    // });
   }
-
+  onEdit(data): void {
+    this.service.editUser(data.newData.id, data.newData).subscribe(res => {
+      data.confirm.resolve(res);
+    }, err => {
+      alert('Something went wrong');
+      data.confirm.reject();
+      throw new Error;
+    });
+  }
   onDeleteConfirm(event): void {
     if (window.confirm('Are you sure you want to delete?')) {
-      event.confirm.resolve();
+      this.service.deleteUser(event.data.id).subscribe(res => event.confirm.resolve(res));
     } else {
+      alert('Something went wrong !!!');
       event.confirm.reject();
+      throw new Error;
     }
   }
 }

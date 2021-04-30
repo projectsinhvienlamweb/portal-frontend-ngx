@@ -2,19 +2,40 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { DatabaseService } from './database.service';
-import { STUDENTS } from './dom-data/mock-user';
-import { STUDENT } from './dom-data/user';
+import { USER } from './dom-data/user';
+
+const cudOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
+
 
 @Injectable({
   providedIn: 'root',
 })
-export class StudentService extends DatabaseService {
+
+export class StudentService {
+  usersUrl = 'http://localhost:3000/users';
   // private studentUrl = 'api/students';
   constructor(private http: HttpClient) {
-    super();
+
   }
-  getStudents(): Observable<STUDENT[]> {
-    return this.http.get<STUDENT[]>(this.studentUrl);
+  // GET REQUEST
+  headers = {
+    'Content-Type': 'application/json',
+  };
+
+  getUsers(): Observable<USER[]> {
+    return this.http.get<USER[]>(this.usersUrl);
   }
+  // POST REQUEST
+  postUser(data): Observable<USER> {
+    return this.http.post<USER>(this.usersUrl, data, {headers: this.headers});
+  }
+  // PUT REQUEST
+  editUser(id, data): Observable<USER> {
+    return this.http.put<USER>(this.usersUrl + `/${id}`, data, {headers: this.headers});
+  }
+  // DELETE REQUEST
+  deleteUser(id): Observable<USER> {
+    return this.http.delete<USER>(this.usersUrl + `/${id}`, {headers: this.headers});
+  }
+
 }

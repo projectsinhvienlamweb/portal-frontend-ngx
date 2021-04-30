@@ -5,11 +5,15 @@
 
   <nb-card-body>
     <div class="form-group">
-      <label for="search">Search</label>
-      <input class="form-control" #search type="text" (keydown.enter)="onSearch(search.value)">
+      <label for="search">
+        <h3>Search</h3>
+      </label>
+      <input class="form-control" placeholder="Searching..." type="text" [(ngModel)]="valueSearch">
     </div>
 
-    <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)">
+    <ng2-smart-table [settings]="settings" [source]="cache | filter: valueSearch" (editConfirm)="onEdit($event)" (createConfirm)="onAdd($event)" (deleteConfirm)="onDeleteConfirm($event)">
     </ng2-smart-table>
+
+    
   </nb-card-body>
 </nb-card>
