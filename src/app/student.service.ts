@@ -14,7 +14,7 @@ const cudOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/jso
 export class StudentService {
   usersUrl = 'http://localhost:3000/users';
   // private studentUrl = 'api/students';
-  constructor(private http: HttpClient) {
+  constructor(protected http: HttpClient) {
 
   }
   // GET REQUEST

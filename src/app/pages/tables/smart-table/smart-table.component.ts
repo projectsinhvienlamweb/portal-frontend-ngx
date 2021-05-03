@@ -1,8 +1,10 @@
 import { DatePipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { LocalDataSource, ServerDataSource } from 'ng2-smart-table';
 import { ServerSourceConf } from 'ng2-smart-table/lib/lib/data-source/server/server-source.conf';
+import { ReplaySubject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 import { SmartTableData } from '../../../@core/data/smart-table';
 import { USER } from '../../../dom-data/user';
@@ -13,7 +15,7 @@ import { StudentService } from '../../../student.service';
   templateUrl: './smart-table.component.html',
   styleUrls: ['./smart-table.component.scss'],
 })
-export class SmartTableComponent {
+export class SmartTableComponent implements OnDestroy {
   settings = {
     add: {
       addButtonContent: '<i class="nb-plus"></i>',
@@ -75,20 +77,20 @@ export class SmartTableComponent {
 
   constructor(private service: StudentService, private http: HttpClient) {
     // const data = this.service.getData();
-    this.service.getUsers().subscribe((res) => {
+    this.service.getUsers().pipe(takeUntil(this.destroy)).subscribe((res) => {
       this.source.load(res);
       this.cache = res;
     }, err => {
       throw new Error;
     });
   }
-
+  destroy: ReplaySubject<any> = new ReplaySubject<any>(1);
   onAdd(data): void {
     if (!data.newData.name || !data.newData.email || !data.newData.dob || !data.newData.role) {
       alert('please input your information');
       data.confirm.reject();
     } else {
-      this.service.postUser(data.newData).subscribe(res => {
+      this.service.postUser(data.newData).pipe(takeUntil(this.destroy)).subscribe(res => {
         data.confirm.resolve(res);
       }, err => {
         data.confirm.reject();
@@ -121,5 +123,9 @@ export class SmartTableComponent {
       event.confirm.reject();
       throw new Error;
     }
+  }
+
+  ngOnDestroy() {
+    this.destroy.next(null);
   }
 }
