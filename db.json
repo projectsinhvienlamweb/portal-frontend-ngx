@@ -1,36 +1,26 @@
 {
   "users": [
     {
-      "id": "geowDZU",
-      "name": "PROO",
-      "dob": "26-12-2012",
-      "email": "akdkasdj@gmail.com",
-      "avatar": "https://i.pinimg.com/736x/5f/40/6a/5f406ab25e8942cbe0da6485afd26b71.jpg",
-      "role": "GUEST"
-    },
-    {
-      "id": "ccYgJ10",
-      "name": "asdas",
-      "dob": "12-12-2020",
-      "email": "dds@gmail.com",
-      "avatar": "https://i.pinimg.com/736x/5f/40/6a/5f406ab25e8942cbe0da6485afd26b71.jpg",
-      "role": "GUEST"
-    },
-    {
       "id": "eZ9bVum",
       "name": "hjjhghj",
       "dob": "21-12-2020",
       "email": "asdasd@gmail.com",
       "avatar": "https://i.pinimg.com/736x/5f/40/6a/5f406ab25e8942cbe0da6485afd26b71.jpg",
       "role": "GUEST"
-    },
-    {
-      "id": "-YXI1yJ",
-      "name": "ajd",
-      "dob": "12-12-2222",
-      "email": "asd@gmail.com",
+    }, {
+      "id": "eZ9bVum",
+      "name": "ccd",
+      "dob": "21-12-2020",
+      "email": "asdasd@gmail.com",
       "avatar": "https://i.pinimg.com/736x/5f/40/6a/5f406ab25e8942cbe0da6485afd26b71.jpg",
-      "role": "ADMIN"
+      "role": "GUEST"
+    }, {
+      "id": "eZ9bVum",
+      "name": "cc",
+      "dob": "21-12-2020",
+      "email": "asdasd@gmail.com",
+      "avatar": "https://i.pinimg.com/736x/5f/40/6a/5f406ab25e8942cbe0da6485afd26b71.jpg",
+      "role": "GUEST"
     }
   ]
 }

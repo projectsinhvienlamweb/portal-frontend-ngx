@@ -15,4 +15,6 @@ export class DatepickerComponent {
     this.min = this.dateService.addDay(this.dateService.today(), -5);
     this.max = this.dateService.addDay(this.dateService.today(), 5);
   }
+  rowData: any;
+
 }

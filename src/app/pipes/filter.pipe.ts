@@ -13,7 +13,7 @@ export class FilterPipe implements PipeTransform {
       return items;
     }
     searchText = searchText.toLocaleLowerCase();
-    const properties = 'name,dob,email,avatar,role'.split(',');
+    const properties = 'id,name,dob,email,avatar,role'.split(',');
 
     return items.filter(it => {
       for (const i of properties) {

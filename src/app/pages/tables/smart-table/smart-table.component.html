@@ -1,19 +1,37 @@
 <nb-card>
-  <nb-card-header>
-    User Management
-  </nb-card-header>
+  <nb-card-header> User Management </nb-card-header>
 
   <nb-card-body>
     <div class="form-group">
       <label for="search">
         <h3>Search</h3>
       </label>
-      <input class="form-control" placeholder="Searching..." type="text" [(ngModel)]="valueSearch">
+      <input
+        #valueSearch
+        class="form-control"
+        placeholder="Searching..."
+        type="text"
+        (keydown.enter)="onSearch(valueSearch.value)"
+      />
     </div>
-
-    <ng2-smart-table [settings]="settings" [source]="cache | filter: valueSearch" (editConfirm)="onEdit($event)" (createConfirm)="onAdd($event)" (deleteConfirm)="onDeleteConfirm($event)">
+    <div
+      *ngIf="validService.isEvent?.invalid && validService.isEvent?.dirty"
+      class="alert alert-danger"
+    >
+      <div *ngIf="validService.isEvent?.errors.required">
+        {{ validService?.getField }} is required.
+      </div>
+      <div *ngIf="validService.isEvent?.errors.minlength">
+        {{ validService?.getField }} must be at least 4 characters long.
+      </div>
+    </div>
+    <ng2-smart-table
+      [settings]="settings"
+      [source]="source"
+      (editConfirm)="onEdit($event)"
+      (createConfirm)="onAdd($event)"
+      (deleteConfirm)="onDeleteConfirm($event)"
+    >
     </ng2-smart-table>
-
-    
   </nb-card-body>
 </nb-card>

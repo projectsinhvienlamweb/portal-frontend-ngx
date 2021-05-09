@@ -1,0 +1,15 @@
+<input type="text" name="name" class="form-control"
+      required minlength="4" appForbiddenName="bob"
+      (keypress)="validService.getModel(field, fieldTitle)"
+      [placeholder]="fieldTitle"
+      [(ngModel)]="valueInput" #field="ngModel">
+
+      <!-- <div *ngIf="field.invalid && (field.dirty)" class="alert">
+  <div *ngIf="field.errors.required">{{ fieldTitle }} is required.</div>
+  <div *ngIf="field.errors.minlength">
+    {{ fieldTitle }} must be at least 4 characters long.
+  </div>
+  <div *ngIf="field.errors.forbiddenName">
+    {{ fieldTitle }} Name cannot be Bob.
+  </div>
+</div> -->

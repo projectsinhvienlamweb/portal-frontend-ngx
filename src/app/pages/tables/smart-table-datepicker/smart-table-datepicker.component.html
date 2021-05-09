@@ -1,0 +1,4 @@
+<nb-card-body class="form-group">
+  <input nbInput class="form-control" readonly [placeholder]="placeholder" [(ngModel)]="cell.newValue" [nbDatepicker]="datePicker" />
+  <nb-datepicker (dateChange)="onChange()" #datePicker></nb-datepicker>
+</nb-card-body>
