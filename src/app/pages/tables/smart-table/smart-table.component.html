@@ -4,7 +4,7 @@
   <nb-card-body>
     <div class="form-group">
       <label for="search">
-        <h3>Search</h3>
+        <h3>Search Form</h3>
       </label>
       <input
         #valueSearch
@@ -13,6 +13,22 @@
         type="text"
         (keydown.enter)="onSearch(valueSearch.value)"
       />
+      <a
+        href="javascript:void(0)"
+        (click)="onSearch(valueSearch.value)"
+        style="
+          font-size: 18px;
+          text-transform: uppercase;
+          padding: 10px 20px;
+          text-decoration: none;
+          box-shadow: 0 6px 5px -5px gainsboro;
+          margin-top: 10px;
+          color: #222B45;
+          font-weight: bold;
+        "
+        class="btn"
+        >Search</a
+      >
     </div>
     <div
       *ngIf="validService.isEvent?.invalid && validService.isEvent?.dirty"
