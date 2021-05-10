@@ -24,7 +24,7 @@ import { ValidationService } from '../validation.service';
   styleUrls: ['./smart-table.component.scss'],
   providers: [ValidationService],
 })
-export class SmartTableComponent implements OnDestroy {
+export class SmartTableComponent implements OnDestroy, OnChanges {
   settings = {
     add: {
       addButtonContent: '<i class="nb-plus"></i>',
@@ -87,6 +87,7 @@ export class SmartTableComponent implements OnDestroy {
       },
     },
   };
+  isLoading = true;
   valueSearch: string = '';
   source: LocalDataSource = new LocalDataSource;
   test: NgModel;
@@ -94,6 +95,7 @@ export class SmartTableComponent implements OnDestroy {
   constructor(private service: StudentService, private http: HttpClient, public validService: ValidationService) {
     // const data = this.service.getData();
     this.service.getUsers().pipe(takeUntil(this.destroy)).subscribe((res) => {
+      this.isLoading = !this.isLoading;
       this.source.load(res);
     }, err => {
       throw new Error;
@@ -101,11 +103,15 @@ export class SmartTableComponent implements OnDestroy {
   }
 
   onSearch(dataSearch): void {
+    this.isLoading = !this.isLoading;
     this.service.searchUsers(dataSearch).subscribe(res => {
       const test = new Promise((resolve, reject) => {
         resolve(res);
       });
-      test.then((ac: USER[]) => this.source.load(ac));
+      test.then((ac: USER[]) => {
+        this.isLoading = !this.isLoading;
+        this.source.load(ac);
+      });
     }, err => {
       if (err) {
         alert('something went wrong!!!');
@@ -153,6 +159,8 @@ export class SmartTableComponent implements OnDestroy {
     this.destroy.next(null);
   }
 
+  ngOnChanges() {
+  }
 }
 
 

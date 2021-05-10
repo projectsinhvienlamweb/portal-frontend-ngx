@@ -1,4 +1,4 @@
-<nb-card>
+<nb-card [nbSpinner]="isLoading" nbSpinnerStatus="primary">
   <nb-card-header> User Management </nb-card-header>
 
   <nb-card-body>
@@ -23,7 +23,7 @@
           text-decoration: none;
           box-shadow: 0 6px 5px -5px gainsboro;
           margin-top: 10px;
-          color: #222B45;
+          color: #222b45;
           font-weight: bold;
         "
         class="btn"
