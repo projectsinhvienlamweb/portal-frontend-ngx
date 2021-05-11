@@ -30,8 +30,8 @@ export class SmartTableComponent {
         title: 'Username',
         type: 'string',
       },
-      phone_number: {
-        title: 'Last Name',
+      Fullname: {
+        title: 'Full Name',
         type: 'string',
       },
       email: {
