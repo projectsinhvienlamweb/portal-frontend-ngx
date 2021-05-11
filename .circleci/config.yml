@@ -86,12 +86,25 @@ jobs:
         aws-s3/sync:
           arguments: |
               --delete \
-              --acl public-read
+              --acl public-read \
+              --cache-control 'max-age=604800' \n
+              --exclude *.html
           aws-access-key-id: AWS_ACCESS_KEY_ID
           aws-region: NG_DEPLOY_AWS_REGION
           aws-secret-access-key: AWS_SECRET_ACCESS_KEY
           from: dist
           to: s3://dev-sg.portal.hocvienconggiao.com
+      - 
+        aws-s3/sync:
+          arguments: |
+              --delete \
+              --acl public-read \
+              --cache-control 'no-cache'
+          aws-access-key-id: AWS_ACCESS_KEY_ID
+          aws-region: NG_DEPLOY_AWS_REGION
+          aws-secret-access-key: AWS_SECRET_ACCESS_KEY
+          from: dist
+          to: s3://dev-sg.portal.hocvienconggiao.com          
     working_directory: ~/ngx-portal    
   push_prod: 
     docker: 
@@ -123,12 +136,26 @@ jobs:
         aws-s3/sync:
           arguments: |
               --delete \
-              --acl public-read
+              --acl public-read \n
+              --cache-control 'max-age=604800' \n
+              --exclude *.html              
           aws-access-key-id: AWS_ACCESS_KEY_ID
           aws-region: NG_DEPLOY_AWS_REGION
           aws-secret-access-key: AWS_SECRET_ACCESS_KEY
           from: dist
           to: s3://prod-sg.portal.hocvienconggiao.com
+      - 
+        aws-s3/sync:
+          arguments: |
+              --delete \
+              --acl public-read \n
+              --cache-control 'no-cache'
+          aws-access-key-id: AWS_ACCESS_KEY_ID
+          aws-region: NG_DEPLOY_AWS_REGION
+          aws-secret-access-key: AWS_SECRET_ACCESS_KEY
+          from: dist
+          to: s3://prod-sg.portal.hocvienconggiao.com
+          
     working_directory: ~/ngx-portal    
     
 workflows: 
