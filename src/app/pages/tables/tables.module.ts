@@ -22,7 +22,7 @@ import { SpinnerInButtonsComponent } from '../extra-components/spinner/spinner-i
     TablesRoutingModule,
     Ng2SmartTableModule,
     FormsModule,
-    NbSpinnerModule
+    NbSpinnerModule,
   ],
   declarations: [
     ...routedComponents,
