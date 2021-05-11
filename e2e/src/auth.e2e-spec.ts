@@ -28,9 +28,9 @@ describe('Amplify Auth', () => {
   it('should login success with correct credential', async () => {
     await page.navigateTo();
     const username: ElementFinder = await page.getUsernameInput();
-    await username.sendKeys('phatnh');
+    await username.sendKeys('dev-operator');
     const password: ElementFinder = await page.getPasswordInput();
-    await password.sendKeys('12345678');
+    await password.sendKeys('DevOperator!@#456');
     await password.sendKeys(Key.ENTER);
     await browser.wait(ExpectedConditions.presenceOf(element(by.css('ngx-pages'))), 10000);
     expect(await page.getTitleText()).toEqual('User Management');
