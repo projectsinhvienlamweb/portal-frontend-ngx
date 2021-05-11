@@ -87,7 +87,7 @@ jobs:
           arguments: |
               --delete \
               --acl public-read \
-              --cache-control 'max-age=604800' \n
+              --cache-control 'max-age=604800' \
               --exclude *.html
           aws-access-key-id: AWS_ACCESS_KEY_ID
           aws-region: NG_DEPLOY_AWS_REGION
@@ -136,8 +136,8 @@ jobs:
         aws-s3/sync:
           arguments: |
               --delete \
-              --acl public-read \n
-              --cache-control 'max-age=604800' \n
+              --acl public-read \
+              --cache-control 'max-age=604800' \
               --exclude *.html              
           aws-access-key-id: AWS_ACCESS_KEY_ID
           aws-region: NG_DEPLOY_AWS_REGION
@@ -148,7 +148,7 @@ jobs:
         aws-s3/sync:
           arguments: |
               --delete \
-              --acl public-read \n
+              --acl public-read \
               --cache-control 'no-cache'
           aws-access-key-id: AWS_ACCESS_KEY_ID
           aws-region: NG_DEPLOY_AWS_REGION
