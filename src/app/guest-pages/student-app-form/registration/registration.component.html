@@ -1,0 +1,100 @@
+<div class="registration">
+  <div class="container">
+    <div class="registration__box">
+      <form #regisForm="ngForm" #form  class="registration__box-form" (ngSubmit)="onSubmit(regisForm)">
+        
+        <div #tab1 class="form__tab">
+          <span class="form__tab-label">Tên thánh, Họ và tên:</span>
+          <input placeholder="Tên thánh" ngModel #tenThanh="ngModel" required name="tenThanh" class="form__tab-control validation" minlength="3" type="text">
+          <span>{{validationMsg}}</span>
+          <input placeholder="Họ và tên" ngModel #hovaten="ngModel" required name="hovaten" class="form__tab-control validation mt-1" minlength="5" type="text">
+          <a href="javascript:void(0)" [hidden]="validation(tab1)" (click)="nextTab(tab1, tab2)" class="btn btn-primary text-light">Next</a>
+        </div>
+
+        <div #tab2 hidden class="form__tab">
+          <span class="form__tab-label">Giới tính:</span>
+          <select aria-required="true" class="form-control validation" name="gioiTinh" ngModel #gioiTinh="ngModel" required>
+            <option value="" disabled selected>Chọn giới tính</option>
+            <option value="Nam">Nam</option>
+            <option value="Nữ">Nữ</option>
+          </select>
+          <a href="javascript:void(0)" (click)="prevTab(tab2, tab1)" class="btn btn-primary text-light mt-2 mx-2">Prev</a>
+          <a href="javascript:void(0)" [hidden]="validation(tab2)" (click)="nextTab(tab2, tab3)" class="btn btn-primary text-light mt-2">Next</a>
+        </div>
+
+        <div #tab3 hidden class="form__tab">
+          <span class="form__tab-label">Ngày tháng năm sinh (dd/mm/yyyy):</span>
+          <input placeholder="Ngày tháng năm sinh" ngModel #dob="ngModel" required name="dob" class="form-control validation" type="text">
+          <span class="form__tab-label">Nơi Sinh:</span>
+          <input placeholder="Nơi Sinh" ngModel #pob="ngModel" required name="pob" class="form-control validation" type="text">
+          <a href="javascript:void(0)" (click)="prevTab(tab3, tab2)" class="btn btn-primary text-light mt-2 mx-2">Prev</a>
+          <a href="javascript:void(0)" [hidden]="validation(tab3)" (click)="nextTab(tab3, tab4)" class="btn btn-primary text-light mt-2">Next</a>
+        </div>
+
+        <div #tab4 hidden class="form__tab">
+          <span class="form__tab-label">Chức vụ hiện tại:</span>
+          <select #identity="ngModel" class="form-control validation" aria-required="true" required name="chucvu" ngModel>
+            <option value="" disabled selected>Chọn chức vụ hiện tại</option>
+            <option value="Linh mục">Linh muc</option>
+            <option value="Chủng sinh">Chủng sinh</option>
+            <option value="Tu sĩ">Tu sĩ</option>
+            <option value="Giáo dân">Giáo dân</option>
+          </select>
+          
+          <div [ngSwitch]="identity.value" class="">
+            <!-- Linh Muc -->
+            <div *ngSwitchCase="'Linh mục'" class="form-group">
+              <span class="form__tab-label">Giáo phận:</span>
+              <input class="form-control validation" ngModel name="giaophan" #giaophan="ngModel" required type="text">
+              <span class="form__tab-label">Dòng:</span>
+              <input class="form-control validation" ngModel name="dongtu" #dongtu="ngModel" required type="text">
+            </div>
+            <!-- Chủng Sinh -->
+            <div *ngSwitchCase="'Chủng sinh'" class="">
+              <span class="form__tab-label">Giáo phận:</span>
+              <input class="form-control validation" ngModel name="giaophan" #giaophan="ngModel" required type="text">
+            </div>
+            <!-- Tu sĩ -->
+            <div *ngSwitchCase="'Tu sĩ'" class="">
+              <span class="form__tab-label">Dòng:</span>
+              <input class="form-control validation" ngModel name="dongtu" #dongtu="ngModel" required type="text">
+              <select name="giaidoan" #giaidoan="ngModel" ngModel required class="form-control validation">
+                <option value="Khấn trọn">Khấn trọn</option>
+                <option value="Khấn tạm">Khấn tạm</option>
+                <option value="Nhà tập">Nhà tập</option>
+                <option value="Dự tu">Dự tu</option>
+              </select>
+            </div>
+            <!-- Giáo dân -->
+            <div *ngSwitchCase="'Giáo dân'" class="">
+              <span class="form__tab-label">Giáo xứ:</span>
+              <input class="form-control validation" ngModel name="giaoxu" #giaoxu="ngModel" required type="text">
+              <span class="form__tab-label">Giáo phận:</span>
+              <input class="form-control validation" ngModel name="giaophan" #giaophan="ngModel" required type="text">
+            </div>
+          </div>
+          
+          <a href="javascript:void(0)" (click)="prevTab(tab4, tab3)" class="btn btn-primary text-light mt-2 mx-2">Prev</a>
+          <a href="javascript:void(0)" (click)="nextTab(tab4, tab5)" [hidden]="validation(tab4)" class="btn btn-primary text-light mt-2">Next</a>
+        </div>
+
+        <div #tab5 hidden class="form__tab">
+          <span class="form__tab-label">Quốc tịch:</span>
+          <input ngModel #quoctich="ngModel" name="quoctich" required type="text" class="form-control validation">
+          <span class="form__tab-label">Dân tộc:</span>
+          <input ngModel #dantoc="ngModel" name="dantoc" required type="text" class="form-control validation">
+          
+          <a href="javascript:void(0)" (click)="prevTab(tab5, tab4)" class="btn btn-primary text-light my-2 mx-2">Prev</a>
+          <a href="javascript:void(0)" (click)="nextTab(tab5, finishedTab)" [hidden]="validation(tab5)" class="btn btn-primary text-light my-2">Next</a>
+        </div>
+
+        <div #finishedTab hidden>
+          Thanks for your infomation
+          <a href="javascript:void(0)" (click)="prevTab(finishedTab, tab4)" class="btn btn-primary text-light mt-2 mx-2">Prev</a>
+        </div>
+        <button [disabled]="formCompleted(form)" class="btn btn-warning mt-3">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
+
