@@ -8,7 +8,7 @@
     &-form {
       .form__tab {
         animation: show 1s ease alternate;
-        &-control{
+        &-control {
           display: block;
         }
         @keyframes show {
@@ -21,7 +21,6 @@
             transform: translateY(0);
           }
         }
-       
       }
     }
   }
