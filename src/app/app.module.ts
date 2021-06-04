@@ -24,6 +24,7 @@ import {
 import { AmplifyUIAngularModule } from '@aws-amplify/ui-angular';
 import Amplify from 'aws-amplify';
 import { environment } from '../environments/environment';
+import { FormsModule } from '@angular/forms';
 
 Amplify.configure(environment.amplifyConfig);
 
@@ -32,6 +33,7 @@ Amplify.configure(environment.amplifyConfig);
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    FormsModule,
     HttpClientModule,
     AppRoutingModule,
     NbSidebarModule.forRoot(),

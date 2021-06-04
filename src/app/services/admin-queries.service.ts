@@ -20,6 +20,7 @@ export class AdminQueriesService extends AmplifyService {
   nextToken;
   limit = 10;
 
+
   async getUsers() {
     const response = await this.fetch('get', '/listUsers', {
       queryStringParameters: {
