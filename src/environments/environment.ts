@@ -12,17 +12,10 @@ export const environment = {
   production: false,
   amplifyConfig: {
     'aws_project_region': 'ap-southeast-1',
-    'aws_cognito_identity_pool_id': 'ap-southeast-1:3dde6e04-17ac-4f38-87fe-84b23cda6911',
+    'aws_cognito_identity_pool_id': 'ap-southeast-1:2e60453d-1c9c-4ce5-ac28-7f1842645289',
     'aws_cognito_region': 'ap-southeast-1',
-    'aws_user_pools_id': 'ap-southeast-1_ll4yIM5ax',
-    'aws_user_pools_web_client_id': '3c15dfd0cf8si85lpfj046lioo',
+    'aws_user_pools_id': 'ap-southeast-1_vmFHg7JIC',
+    'aws_user_pools_web_client_id': '34oukmtdqr4hh9405o7prmrjma',
     'oauth': {},
-    'aws_cloud_logic_custom': [
-      {
-        'name': 'AdminQueries',
-        'endpoint': 'https://xaeo1xy4fc.execute-api.ap-southeast-1.amazonaws.com/dev',
-        'region': 'ap-southeast-1',
-      },
-    ],
   },
 };
