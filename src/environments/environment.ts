@@ -17,5 +17,12 @@ export const environment = {
     'aws_user_pools_id': 'ap-southeast-1_9QWSYGzXk',
     'aws_user_pools_web_client_id': '1rav411nccnp73htopbhml8s61',
     'oauth': {},
+        "aws_cloud_logic_custom": [
+      {
+          "name": "AdminQueries",
+          "endpoint": "https://dev-sg.portal.hocvienconggiao.com/query-api",
+          "region": "ap-southeast-1"
+      }
+  ],
   },
 };
