@@ -1,0 +1,495 @@
+<nb-layout windowMode>
+    <nb-layout-column>
+        <div class="row">
+            <div class="col">
+                <nb-card>
+                    <nb-card-header>ĐƠN ĐĂNG KÝ NHẬP HỌC</nb-card-header>
+                    <nb-card-body>
+                        <form class="form-horizontal">
+                            <div class="form-group row">
+                                <label class="label col-sm-3 form-control-label">
+                                    1. Tên Thánh, họ và tên:
+                                </label>
+                                <div class="col">
+                                    <input type="text" nbInput fullWidth placeholder="">
+                                </div>
+                                <div class="col-sm-auto">
+                                    <div class="checkbox">
+                                        <nb-checkbox>Nam</nb-checkbox>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="label col-sm-3 form-control-label">
+                                    2. Ngày tháng năm sinh:
+                                </label>
+                                <div class="col">
+                                    <nb-datepicker #datepicker format="dd/MM/yyyy"></nb-datepicker>
+                                    <input nbInput fullWidth [nbDatepicker]="datepicker" placeholder="dd/mm/yyyy">
+                                </div>
+                                <label class="label col-sm-auto form-control-label">
+                                    Nơi sinh
+                                </label>
+                                <div class="col">
+                                    <input type="text" nbInput fullWidth placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="label col-sm-3 form-control-label">
+                                    3. Hiện là (chọn 1 trong các mục sau):
+                                </label>
+                                <div class="col col-sm-9">
+                                    <div class="form-group row">
+                                        <div class="col-sm-2">
+                                            <div class="checkbox">
+                                                <nb-checkbox>Linh mục</nb-checkbox>
+                                            </div>
+                                        </div>
+                                        <label class="label col-sm-auto form-control-label">
+                                            Giáo Phận
+                                        </label>
+                                        <div class="col">
+                                            <input type="text" nbInput fullWidth placeholder="">
+                                        </div>
+                                        <label class="label col-sm-auto form-control-label">
+                                            (Dòng):
+                                        </label>
+                                        <div class="col">
+                                            <input type="text" nbInput fullWidth placeholder="">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <div class="col-sm-2">
+                                            <div class="checkbox">
+                                                <nb-checkbox>Chủng sinh</nb-checkbox>
+                                            </div>
+                                        </div>
+                                        <label class="label col-sm-auto form-control-label">
+                                            Giáo Phận
+                                        </label>
+                                        <div class="col">
+                                            <input type="text" nbInput fullWidth placeholder="">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <div class="col-sm-2">
+                                            <div class="checkbox">
+                                                <nb-checkbox>Tu sĩ</nb-checkbox>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="row form-group">
+                                                <label class="label col-sm-auto form-control-label">
+                                                    Dòng tu
+                                                </label>
+                                                <div class="col">
+                                                    <input type="text" nbInput fullWidth placeholder="">
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <label class="label col-sm-auto form-control-label">
+                                                    Giai đoạn
+                                                </label>
+                                                <div class="col">
+                                                    <div class="checkbox">
+                                                        <nb-checkbox>Khấn trọn</nb-checkbox>
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="checkbox">
+                                                        <nb-checkbox>Khấn tạm</nb-checkbox>
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="checkbox">
+                                                        <nb-checkbox>Nhà tập</nb-checkbox>
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="checkbox">
+                                                        <nb-checkbox>Dự tu</nb-checkbox>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <div class="col-sm-2">
+                                            <div class="checkbox">
+                                                <nb-checkbox>Giáo dân</nb-checkbox>
+                                            </div>
+                                        </div>
+                                        <label class="label col-sm-auto form-control-label">
+                                            Giáo xứ
+                                        </label>
+                                        <div class="col">
+                                            <input type="text" nbInput fullWidth placeholder="">
+                                        </div>
+                                        <label class="label col-sm-auto form-control-label">
+                                            Giáo phận
+                                        </label>
+                                        <div class="col">
+                                            <input type="text" nbInput fullWidth placeholder="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="label col-sm-3 form-control-label">
+                                    4. Quốc tịch:
+                                </label>
+                                <div class="col">
+                                    <input type="text" nbInput fullWidth placeholder="">
+                                </div>
+                                <label class="label col-sm-auto form-control-label">
+                                    Dân tộc
+                                </label>
+                                <div class="col">
+                                    <input type="text" nbInput fullWidth placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="label col-sm-3 form-control-label">
+                                    5. Số CMND/ Passport:
+                                </label>
+                                <div class="col">
+                                    <input type="text" nbInput fullWidth placeholder="">
+                                </div>
+                                <label class="label col-sm-auto form-control-label">
+                                    Ngày cấp
+                                </label>
+                                <div class="col">
+                                    <input type="text" nbInput fullWidth placeholder="">
+                                </div>
+                                <label class="label col-sm-auto form-control-label">
+                                    Tại
+                                </label>
+                                <div class="col">
+                                    <input type="text" nbInput fullWidth placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="label col-sm-3 form-control-label">
+                                    6. Thông tin liên lạc:
+                                </label>
+                                <div class="col col-sm-9">
+                                    <div class="form-group row">
+                                        <label class="label col-sm-auto form-control-label">
+                                            Địa chỉ
+                                        </label>
+                                        <div class="col">
+                                            <input type="text" nbInput fullWidth placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="label col-sm-auto form-control-label">
+                                            Email
+                                        </label>
+                                        <div class="col">
+                                            <input type="text" nbInput fullWidth placeholder="">
+                                        </div>
+                                        <label class="label col-sm-auto form-control-label">
+                                            Điện thoại
+                                        </label>
+                                        <div class="col">
+                                            <input type="text" nbInput fullWidth placeholder="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="label col-sm-3 form-control-label">
+                                    7. Đã hoàn thành chương trình:
+                                </label>
+                                <div class="col col-sm-9">
+                                    <div class="form-group row">
+                                        <div class="col-sm-2">
+                                            <div class="checkbox">
+                                                <nb-checkbox>Trung học</nb-checkbox>
+                                            </div>
+                                        </div>
+                                        <label class="label col-sm-auto form-control-label">
+                                            Trường
+                                        </label>
+                                        <div class="col">
+                                            <input type="text" nbInput fullWidth placeholder="">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <div class="col-sm-2">
+                                            <div class="checkbox">
+                                                <nb-checkbox>Đại học</nb-checkbox>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="row form-group">
+                                                <label class="label col-sm-auto form-control-label">
+                                                    Trường
+                                                </label>
+                                                <div class="col">
+                                                    <input type="text" nbInput fullWidth placeholder="">
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <label class="label col-sm-auto form-control-label">
+                                                    Chuyên ngành
+                                                </label>
+                                                <div class="col">
+                                                    <input type="text" nbInput fullWidth placeholder="">
+                                                </div>
+                                                <label class="label col-sm-auto form-control-label">
+                                                    Năm tốt nghiệp
+                                                </label>
+                                                <div class="col">
+                                                    <input type="text" nbInput fullWidth placeholder="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <div class="col-sm-2">
+                                            <div class="checkbox">
+                                                <nb-checkbox>Cao học</nb-checkbox>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="row form-group">
+                                                <label class="label col-sm-auto form-control-label">
+                                                    Trường
+                                                </label>
+                                                <div class="col">
+                                                    <input type="text" nbInput fullWidth placeholder="">
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <label class="label col-sm-auto form-control-label">
+                                                    Chuyên ngành
+                                                </label>
+                                                <div class="col">
+                                                    <input type="text" nbInput fullWidth placeholder="">
+                                                </div>
+                                                <label class="label col-sm-auto form-control-label">
+                                                    Năm tốt nghiệp
+                                                </label>
+                                                <div class="col">
+                                                    <input type="text" nbInput fullWidth placeholder="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group row">
+                                        <div class="col-sm-2">
+                                            <div class="checkbox">
+                                                <nb-checkbox>Tiến sĩ</nb-checkbox>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="row form-group">
+                                                <label class="label col-sm-auto form-control-label">
+                                                    Trường
+                                                </label>
+                                                <div class="col">
+                                                    <input type="text" nbInput fullWidth placeholder="">
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <label class="label col-sm-auto form-control-label">
+                                                    Chuyên ngành
+                                                </label>
+                                                <div class="col">
+                                                    <input type="text" nbInput fullWidth placeholder="">
+                                                </div>
+                                                <label class="label col-sm-auto form-control-label">
+                                                    Năm tốt nghiệp
+                                                </label>
+                                                <div class="col">
+                                                    <input type="text" nbInput fullWidth placeholder="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <div class="col-sm-auto">
+                                            <div class="checkbox">
+                                                <nb-checkbox>Chương trình khác</nb-checkbox>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <input type="text" nbInput fullWidth placeholder="">
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="label col-sm-3 form-control-label">
+                                    8. Trình độ ngoại ngữ:
+                                </label>
+                                <div class="col col-sm-9">
+                                    <table class="table table-bordered text-center">
+                                        <thead>
+                                            <tr>
+                                                <th width="25%" scope="col"></th>
+                                                <th width="25%" scope="col">Sơ cấp</th>
+                                                <th width="25%" scope="col">Trung cấp</th>
+                                                <th width="25%" scope="col">Nâng cao</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">Tiếng Anh</th>
+                                                <td>
+                                                    <nb-checkbox></nb-checkbox>
+                                                </td>
+                                                <td>
+                                                    <nb-checkbox></nb-checkbox>
+                                                </td>
+                                                <td>
+                                                    <nb-checkbox></nb-checkbox>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Tiếng Pháp</th>
+                                                <td>
+                                                    <nb-checkbox></nb-checkbox>
+                                                </td>
+                                                <td>
+                                                    <nb-checkbox></nb-checkbox>
+                                                </td>
+                                                <td>
+                                                    <nb-checkbox></nb-checkbox>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Tiếng Ý</th>
+                                                <td>
+                                                    <nb-checkbox></nb-checkbox>
+                                                </td>
+                                                <td>
+                                                    <nb-checkbox></nb-checkbox>
+                                                </td>
+                                                <td>
+                                                    <nb-checkbox></nb-checkbox>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">
+                                                    <input type="text" class="text-center" nbInput fullWidth
+                                                        placeholder="Ngôn ngữ khác">
+                                                </th>
+                                                <td>
+                                                    <nb-checkbox></nb-checkbox>
+                                                </td>
+                                                <td>
+                                                    <nb-checkbox></nb-checkbox>
+                                                </td>
+                                                <td>
+                                                    <nb-checkbox></nb-checkbox>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="label col-sm-3 form-control-label">
+                                    9. Chương trình đăng ký học:
+                                </label>
+                                <div class="col col-sm-9">
+                                    <div class="form-group row" *ngFor="let program of programs">
+                                        <div class="col">
+                                            <div class="checkbox">
+                                                <nb-checkbox>{{ program }}</nb-checkbox>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-sm-auto">
+                                            <div class="checkbox">
+                                                <nb-checkbox>Chương trình khác</nb-checkbox>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col">
+                                            <input type="text" nbInput fullWidth placeholder="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="label col-sm-3 form-control-label">
+                                    10. Xác nhận của ứng viên:
+                                </label>
+                                <div class="col">
+                                    <div class="checkbox">
+                                        <nb-checkbox>Tôi cam đoan những lời khai trên là đúng sự thật. Tôi hoàn toàn
+                                            chịu trách nhiệm về những lời khai này.</nb-checkbox>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="label col-sm-3 form-control-label">
+                                    11. Xác nhận của Giáo phận / Dòng tu:<br>
+                                    (Đối với giáo dân, cần thêm xác nhận của giáo xứ)<br>
+                                    Người xác nhận ký, ghi rõ họ tên và chức vụ
+                                </label>
+                                <div class="col">
+                                    <textarea nbInput fullWidth placeholder=""></textarea>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group row">
+                                <label class="label col-sm-3 form-control-label">
+                                    Hồ sơ đính kèm bắt buộc:
+                                </label>
+                                <div class="col col-sm-9">
+                                    <div class="form-group row">
+                                        <div class="col">
+                                            <div class="checkbox">
+                                                <nb-checkbox>Bản sao căn cước công dân hoặc hộ chiếu</nb-checkbox>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col">
+                                            <div class="checkbox">
+                                                <nb-checkbox>Bản sao các văn bằng Trung học, đại học, hoặc bằng cấp
+                                                    tương đương</nb-checkbox>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="offset-sm-3 col-sm-9">
+                                    <button type="submit" nbButton status="warning">Nộp đơn</button>
+                                </div>
+                            </div>
+                        </form>
+                    </nb-card-body>
+                </nb-card>
+            </div>
+        </div>
+    </nb-layout-column>
+</nb-layout>

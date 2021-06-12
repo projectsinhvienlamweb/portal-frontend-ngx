@@ -3,18 +3,22 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
-import { NgxAuthRoutingModule } from './auth-routing.module';
-import { NbAuthModule } from '@nebular/auth';
+import { StudentApplicationRoutingModule } from './student-application-routing.module';
 import {
   NbAlertModule,
   NbButtonModule,
   NbCardModule,
   NbCheckboxModule,
+  NbDatepickerModule,
   NbInputModule,
+  NbLayoutModule,
+  NbMenuModule,
   NbRadioModule,
+  NbSidebarModule,
 } from '@nebular/theme';
-import { LoginComponent } from './login/login.component';
 import { AmplifyUIAngularModule } from '@aws-amplify/ui-angular';
+import { StudentApplicationFormComponent } from './student-application-form/student-application-form.component';
+import { ThemeModule } from '../@theme/theme.module';
 
 @NgModule({
   imports: [
@@ -25,15 +29,19 @@ import { AmplifyUIAngularModule } from '@aws-amplify/ui-angular';
     NbInputModule,
     NbButtonModule,
     NbCheckboxModule,
-    NgxAuthRoutingModule,
-    NbAuthModule,
+    StudentApplicationRoutingModule,
     NbCardModule,
     NbRadioModule,
+    NbLayoutModule,
+    ThemeModule,
+    NbMenuModule,
     AmplifyUIAngularModule,
+    NbSidebarModule,
+    NbDatepickerModule,
   ],
   declarations: [
-    LoginComponent,
+    StudentApplicationFormComponent,
   ],
 })
-export class NgxAuthModule {
+export class StudentApplicationModule {
 }

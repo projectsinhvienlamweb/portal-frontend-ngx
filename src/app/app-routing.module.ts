@@ -12,6 +12,11 @@ export const routes: Routes = [
     loadChildren: () => import('./auth/auth.module')
       .then(m => m.NgxAuthModule),
   },
+  {
+    path: 'student-application',
+    loadChildren: () => import('./student-application/student-application.module')
+      .then(m => m.StudentApplicationModule),
+  },
   { path: '', redirectTo: 'auth', pathMatch: 'full' },
   { path: '**', redirectTo: 'auth' },
 ];
