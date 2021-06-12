@@ -168,7 +168,8 @@ jobs:
 workflows: 
   test_and_push: 
     jobs: 
-      - test
+      - test:
+          context: build_push     
       - push_dev:
           context: build_push
           filters: 
