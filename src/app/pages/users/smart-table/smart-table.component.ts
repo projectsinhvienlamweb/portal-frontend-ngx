@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Auth } from 'aws-amplify';
 import { LocalDataSource } from 'ng2-smart-table';
 import { AdminQueriesService } from '../../../services/admin-queries.service';
 import { DateCellComponent } from './date-cell.component';
@@ -65,8 +66,21 @@ export class SmartTableComponent {
   onDeleteConfirm(event): void {
     if (window.confirm('Are you sure you want to delete?')) {
       event.confirm.resolve();
+            testFetch(this.service);
+
     } else {
       event.confirm.reject();
     }
   }
+}
+
+
+async function testFetch(service) {
+  const myInit = { 
+    headers: { 
+      Authorization: `Bearer ${(await Auth.currentSession()).getIdToken().getJwtToken()}`,
+    },
+  };
+
+  service.fetch("get", "/example-service/test2", myInit);
 }
